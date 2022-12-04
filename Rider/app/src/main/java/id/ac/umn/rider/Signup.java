@@ -66,7 +66,7 @@ public class Signup extends AppCompatActivity {
                 if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || username.isEmpty() || pass.isEmpty() || passConfirm.isEmpty()){
                     Toast.makeText(Signup.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }
-                else if (!pass.equals(pass)){
+                else if (!pass.equals(passConfirm)){
                     Toast.makeText(Signup.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -82,6 +82,7 @@ public class Signup extends AppCompatActivity {
                                 databaseReference.child("Users").child(username).child("Last Name").setValue(lname);
                                 databaseReference.child("Users").child(username).child("Email").setValue(email);
                                 databaseReference.child("Users").child(username).child("Password").setValue(pass);
+                                databaseReference.child("Users").child(username).child("isBikeCreated").setValue("false");
 
                                 Toast.makeText(Signup.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
                                 finish();
