@@ -35,21 +35,23 @@
         android:id="@+id/pembayaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tanggal Pembayaran Terakhir :"
+        android:layout_marginTop="20dp"
+        android:text="Pembayaran Pajak Terakhir"
         android:textColor="@color/white"
-        android:gravity="center_horizontal"
-        android:textSize="12dp"
+        android:textSize="16dp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="122dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteX="108dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:layout_marginTop="10dp"
+        android:text="25/11/2022"
         android:textColor="@color/white"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
@@ -57,12 +59,25 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.306" />
 
+<!--    <DatePicker-->
+<!--        android:id="@+id/simpleDatePicker"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:datePickerMode="calendar"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.483"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--    />-->
+
+
     <TextView
         android:id="@+id/pembayaranSelanjutnya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Pembayaran Pajak Selanjutnya :"
+        android:text="Pembayaran Pajak Selanjutnya"
         android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
-        android:id="@+id/tanggal"
+        android:id="@+id/tanggalBaru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -81,20 +96,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pembayaranSelanjutnya" />
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/button"
-        android:backgroundTint="@color/white"
-        android:onClick="confirm"
-        android:text="Confirm"
-        android:textColor="@color/black"
-        app:cornerRadius="10dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/white"
+            android:text="Update"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/white"
+            android:onClick="confirm"
+            android:text="Confirm"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
