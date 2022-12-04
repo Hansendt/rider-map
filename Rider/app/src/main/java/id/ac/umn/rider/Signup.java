@@ -59,15 +59,12 @@ public class Signup extends AppCompatActivity {
                 final String fname = signFname.getText().toString();
                 final String lname = signLname.getText().toString();
                 final String email = signEmail.getText().toString();
-                final String emailConfirm = signUsername.getText().toString();
+                final String username = signUsername.getText().toString();
                 final String pass = signPass.getText().toString();
                 final String passConfirm = signPassConfirm.getText().toString();
 
-                if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || emailConfirm.isEmpty() || pass.isEmpty() || passConfirm.isEmpty()){
+                if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || username.isEmpty() || pass.isEmpty() || passConfirm.isEmpty()){
                     Toast.makeText(Signup.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                }
-                else if (!email.equals(emailConfirm)){
-                    Toast.makeText(Signup.this, "Email doesn't match", Toast.LENGTH_SHORT).show();
                 }
                 else if (!pass.equals(pass)){
                     Toast.makeText(Signup.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
@@ -76,14 +73,15 @@ public class Signup extends AppCompatActivity {
                     databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.child(email).exists()){
+                            if (snapshot.child(username).exists()){
                                 Toast.makeText(Signup.this, "Email already exists", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 //send data to firebase
-                                databaseReference.child("Users").child(email).child("First Name").setValue(fname);
-                                databaseReference.child("Users").child(email).child("Last Name").setValue(lname);
-                                databaseReference.child("Users").child(email).child("Password").setValue(pass);
+                                databaseReference.child("Users").child(username).child("First Name").setValue(fname);
+                                databaseReference.child("Users").child(username).child("Last Name").setValue(lname);
+                                databaseReference.child("Users").child(username).child("Email").setValue(email);
+                                databaseReference.child("Users").child(username).child("Password").setValue(pass);
 
                                 Toast.makeText(Signup.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
                                 finish();
