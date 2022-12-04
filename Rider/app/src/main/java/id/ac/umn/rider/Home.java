@@ -26,8 +26,8 @@ public class Home extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
-    TextView username;
-    String email;
+    TextView usernameTextView;
+    String username;
     String vehicleNameString, vehicleBrandString, vehicleModelString, vehicleYearString, vehicleColorString, vehiclePlateString, cylinderCapacityString, vehicleFrameNumberString;
     boolean isBikeCreated = false;
     ArrayList<Reminder> reminderList;
@@ -38,13 +38,12 @@ public class Home extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        username = findViewById(R.id.userName);
-        email = getIntent().getStringExtra("email");
+        usernameTextView = findViewById(R.id.userName);
+        username = getIntent().getStringExtra("username");
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final String getFName = snapshot.child(email).child("First Name").getValue(String.class);
-                username.setText("Hello" + getFName);
+                usernameTextView.setText("Hello, " + username + "!");
             }
 
 
