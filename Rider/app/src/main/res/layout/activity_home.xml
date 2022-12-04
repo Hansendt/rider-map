@@ -22,13 +22,19 @@
                 android:layout_gravity="center"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
-                app:cardCornerRadius="300dp">
+                app:cardCornerRadius="300dp"
+                android:onClick="changeProfilePicture">
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/profilePicture"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:src="@color/black"/>
             </androidx.cardview.widget.CardView>
+<!--            <Button-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/profile">-->
+<!--            </Button>-->
 
             <LinearLayout
                 android:layout_width="match_parent"

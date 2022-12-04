@@ -14,9 +14,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +44,8 @@ public class Home extends AppCompatActivity {
     String isBikeCreated;
     boolean isBikeCreatedBoolean;
     ArrayList<Reminder> reminderList;
+//    Button profile;
+    ImageView profilePicture;
 
 
     @Override
@@ -52,6 +57,18 @@ public class Home extends AppCompatActivity {
         usernameTextView = findViewById(R.id.userName);
         username = getIntent().getStringExtra("username");
         usernameTextView.setText("Hello, " + username + "!");
+
+//        profile = findViewById(R.id.profile);
+        profilePicture = findViewById(R.id.profilePicture);
+
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ImagePicker.with(Home.this)
+//                        .crop()
+//                        .start();
+//            }
+//        });
 
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -122,14 +139,17 @@ public class Home extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
 //        if (reminder.size() == 0) {
 //            replaceFragmentReminder(new ReminderFragment());
 //        }
 
     }
+
+//    public void changeProfilePicture(View view) {
+//        ImagePicker.with(Home.this)
+//                .crop()
+//                .start();
+//    }
 
     @Override
     protected void onRestart() {
@@ -179,6 +199,10 @@ public class Home extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Uri uri = data.getData();
+        profilePicture.setImageURI(uri);
+
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
