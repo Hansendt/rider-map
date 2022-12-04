@@ -24,7 +24,7 @@ public class Signup extends AppCompatActivity {
 
     private ImageButton btnBacktoWelcome;
     private Button btnSignupConfirm;
-    EditText signFname, signLname, signEmail, signEmailConfirm, signPass, signPassConfirm;
+    EditText signFname, signLname, signEmail, signUsername, signPass, signPassConfirm;
     private TextView goLogin;
 
     @Override
@@ -36,7 +36,7 @@ public class Signup extends AppCompatActivity {
         signFname = findViewById(R.id.signFname);
         signLname = findViewById(R.id.signLname);
         signEmail = findViewById(R.id.signEmail);
-        signEmailConfirm = findViewById(R.id.signEmailConfirm);
+        signUsername = findViewById(R.id.signUsername);
         signPass = findViewById(R.id.signPass);
         signPassConfirm = findViewById(R.id.signPassConfirm);
 
@@ -59,7 +59,7 @@ public class Signup extends AppCompatActivity {
                 final String fname = signFname.getText().toString();
                 final String lname = signLname.getText().toString();
                 final String email = signEmail.getText().toString();
-                final String emailConfirm = signEmailConfirm.getText().toString();
+                final String emailConfirm = signUsername.getText().toString();
                 final String pass = signPass.getText().toString();
                 final String passConfirm = signPassConfirm.getText().toString();
 
