@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     private ImageButton btnBack;
-    private EditText inEmail, inPass;
+    private EditText inUsername, inPass;
     private TextView goSignup;
     private Button btnLogin;
 
@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         btnBack = findViewById(R.id.btnBack);
-        inEmail = findViewById(R.id.inEmail);
+        inUsername = findViewById(R.id.inUsername);
         inPass = findViewById(R.id.inPass);
         goSignup = findViewById(R.id.goSignup);
         btnLogin = findViewById(R.id.btnLogin);
@@ -58,20 +58,20 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String email = inEmail.getText().toString();
+                final String username = inUsername.getText().toString();
                 final String pass = inPass.getText().toString();
 
-                if (email.isEmpty() || pass.isEmpty()) {
+                if (username.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(Login.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 } else{
                     databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.child(email).exists()) {
-                                final String getPass = snapshot.child(email).child("Password").getValue(String.class);
+                            if (snapshot.child(username).exists()) {
+                                final String getPass = snapshot.child(username).child("Password").getValue(String.class);
                                 if(getPass.equals(pass)){
                                     Intent inHome = new Intent(Login.this, Home.class);
-                                    inHome.putExtra("email", email);
+                                    inHome.putExtra("username", username);
                                     startActivity(inHome);
                                     finish();
                                 } else {

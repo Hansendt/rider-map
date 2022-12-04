@@ -56,10 +56,10 @@
         app:boxStrokeColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inEmail"
+            android:id="@+id/inUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
+            android:hint="username"
             android:textColor="@color/white"/>
 
     </com.google.android.material.textfield.TextInputLayout>
