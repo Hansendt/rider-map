@@ -143,10 +143,10 @@
         app:boxStrokeColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signEmailConfirm"
+            android:id="@+id/signUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Email"
+            android:hint="Username"
             android:textColor="@color/white"
             android:textSize="13sp"/>
 
@@ -167,6 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:inputType="textPassword"
             android:textColor="@color/white"
             android:textSize="13sp"/>
 
@@ -187,6 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
+            android:inputType="textPassword"
             android:textColor="@color/white"
             android:textSize="13sp"/>
 
