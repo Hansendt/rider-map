@@ -10,28 +10,29 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CreateBikeActivity extends AppCompatActivity implements View.OnClickListener {
 
 //    ActionBar actionBar;
     Button bikeCreated;
-    EditText vehicleName, vehicleBrand, vehicleModel, vehicleYear, vehicleColor, vehiclePlate, cylinderCapacity, vehicleFrameNumber;
+    EditText vehicleName, vehicleModel, vehicleYear, vehicleColor, vehiclePlate, cylinderCapacity, vehicleFrameNumber;
     String vehicleNameString, vehicleBrandString, vehicleModelString, vehicleYearString, vehicleColorString, vehiclePlateString, cylinderCapacityString, vehicleFrameNumberString;
+    AutoCompleteTextView vehicleBrand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_create_bike);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-//        actionBar = getSupportActionBar();
-//        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#171D54")));
 
         vehicleName = findViewById(R.id.vehicleName);
-        vehicleBrand = findViewById(R.id.vehicleBrand);
+//        vehicleBrand = findViewById(R.id.vehicleBrand);
         vehicleModel = findViewById(R.id.vehicleModel);
         vehicleYear = findViewById(R.id.vehicleYear);
         vehicleColor = findViewById(R.id.vehicleColor);
@@ -41,20 +42,24 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
         bikeCreated = (Button)findViewById(R.id.buttonNext);
         bikeCreated.setOnClickListener(this);
 
-    }
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                finish();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+        vehicleBrand = findViewById(R.id.vehicleBrand);
 
-//    public void onBackPressed() {
-//        finish();
-//    }
+        String[] Brand = new String[]{"Honda", "Yamaha", "Kawasaki", "Suzuki", "Benelli", "KTM", "BMW", "BMW", "Royal Enfield"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, Brand);
+        vehicleBrand.setAdapter(adapter);
+
+        vehicleBrand.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "" + vehicleBrand.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+    }
+
 
     @Override
     public void onClick(View view) {
