@@ -20,6 +20,7 @@ public class BikeCreatedFragment extends Fragment {
     private String cc;
     private String year;
 
+
     private TextView bikeName;
     private TextView bikeBrand;
     private TextView bikeModel;

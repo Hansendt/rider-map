@@ -9,12 +9,16 @@ import android.widget.Button;
 
 public class ListPart extends AppCompatActivity {
 
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_list_part);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
     }
 
     public void banDepan(View view) {
@@ -24,6 +28,7 @@ public class ListPart extends AppCompatActivity {
 
     public void toDetail(View view) {
         Intent intent = new Intent(ListPart.this, BikeDetail.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

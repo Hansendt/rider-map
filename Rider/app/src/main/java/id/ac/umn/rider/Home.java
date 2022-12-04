@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.cast.framework.media.ImagePicker;
+//import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,14 +76,14 @@ public class Home extends AppCompatActivity {
                 isBikeCreated = snapshot.child(username).child("isBikeCreated").getValue(String.class);
                 isBikeCreatedBoolean = Boolean.parseBoolean(isBikeCreated);
                 if (isBikeCreatedBoolean) {
-                    vehicleNameString = snapshot.child(username).child("vehicleName").getValue(String.class);
-                    vehicleBrandString = snapshot.child(username).child("vehicleBrand").getValue(String.class);
-                    vehicleModelString = snapshot.child(username).child("vehicleModel").getValue(String.class);
-                    vehicleYearString = snapshot.child(username).child("vehicleYear").getValue(String.class);
-                    vehicleColorString = snapshot.child(username).child("vehicleColor").getValue(String.class);
-                    vehiclePlateString = snapshot.child(username).child("vehiclePlate").getValue(String.class);
-                    cylinderCapacityString = snapshot.child(username).child("cylinderCapacity").getValue(String.class);
-                    vehicleFrameNumberString = snapshot.child(username).child("vehicleFrameNumber").getValue(String.class);
+                    vehicleNameString = snapshot.child(username).child("Bike").child("vehicleName").getValue(String.class);
+                    vehicleBrandString = snapshot.child(username).child("Bike").child("vehicleBrand").getValue(String.class);
+                    vehicleModelString = snapshot.child(username).child("Bike").child("vehicleModel").getValue(String.class);
+                    vehicleYearString = snapshot.child(username).child("Bike").child("vehicleYear").getValue(String.class);
+                    vehicleColorString = snapshot.child(username).child("Bike").child("vehicleColor").getValue(String.class);
+                    vehiclePlateString = snapshot.child(username).child("Bike").child("vehiclePlate").getValue(String.class);
+                    cylinderCapacityString = snapshot.child(username).child("Bike").child("cylinderCapacity").getValue(String.class);
+                    vehicleFrameNumberString = snapshot.child(username).child("Bike").child("vehicleFrameNumber").getValue(String.class);
 
                     BikeCreatedFragment bikeCreatedFragment = new BikeCreatedFragment();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -209,14 +209,14 @@ public class Home extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.child(username).exists()) {
-                            vehicleNameString = snapshot.child(username).child("vehicleName").getValue().toString();
-                            vehicleBrandString = snapshot.child(username).child("vehicleBrand").getValue().toString();
-                            vehicleModelString = snapshot.child(username).child("vehicleModel").getValue().toString();
-                            vehicleYearString = snapshot.child(username).child("vehicleYear").getValue().toString();
-                            vehicleColorString = snapshot.child(username).child("vehicleColor").getValue().toString();
-                            vehiclePlateString = snapshot.child(username).child("vehiclePlate").getValue().toString();
-                            cylinderCapacityString = snapshot.child(username).child("cylinderCapacity").getValue().toString();
-                            vehicleFrameNumberString = snapshot.child(username).child("vehicleFrameNumber").getValue().toString();
+                            vehicleNameString = snapshot.child(username).child("Bike").child("vehicleName").getValue().toString();
+                            vehicleBrandString = snapshot.child(username).child("Bike").child("vehicleBrand").getValue().toString();
+                            vehicleModelString = snapshot.child(username).child("Bike").child("vehicleModel").getValue().toString();
+                            vehicleYearString = snapshot.child(username).child("Bike").child("vehicleYear").getValue().toString();
+                            vehicleColorString = snapshot.child(username).child("Bike").child("vehicleColor").getValue().toString();
+                            vehiclePlateString = snapshot.child(username).child("Bike").child("vehiclePlate").getValue().toString();
+                            cylinderCapacityString = snapshot.child(username).child("Bike").child("cylinderCapacity").getValue().toString();
+                            vehicleFrameNumberString = snapshot.child(username).child("Bike").child("vehicleFrameNumber").getValue().toString();
 
                             BikeCreatedFragment bikeCreatedFragment = new BikeCreatedFragment();
                             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -244,6 +244,7 @@ public class Home extends AppCompatActivity {
     }
     public void bikeInfo(View view) {
         Intent intentBike = new Intent(this, BikeDetail.class);
+        intentBike.putExtra("username", username);
         startActivity(intentBike);
     }
 }

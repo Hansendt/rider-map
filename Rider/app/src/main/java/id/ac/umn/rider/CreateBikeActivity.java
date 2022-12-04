@@ -93,14 +93,14 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
             databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    databaseReference.child("Users").child(username).child("vehicleName").setValue(vehicleNameString);
-                    databaseReference.child("Users").child(username).child("vehicleBrand").setValue(vehicleBrandString);
-                    databaseReference.child("Users").child(username).child("vehicleModel").setValue(vehicleModelString);
-                    databaseReference.child("Users").child(username).child("vehicleYear").setValue(vehicleYearString);
-                    databaseReference.child("Users").child(username).child("vehicleColor").setValue(vehicleColorString);
-                    databaseReference.child("Users").child(username).child("vehiclePlate").setValue(vehiclePlateString);
-                    databaseReference.child("Users").child(username).child("cylinderCapacity").setValue(cylinderCapacityString);
-                    databaseReference.child("Users").child(username).child("vehicleFrameNumber").setValue(vehicleFrameNumberString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehicleName").setValue(vehicleNameString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehicleBrand").setValue(vehicleBrandString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehicleModel").setValue(vehicleModelString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehicleYear").setValue(vehicleYearString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehicleColor").setValue(vehicleColorString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehiclePlate").setValue(vehiclePlateString);
+                    databaseReference.child("Users").child(username).child("Bike").child("cylinderCapacity").setValue(cylinderCapacityString);
+                    databaseReference.child("Users").child(username).child("Bike").child("vehicleFrameNumber").setValue(vehicleFrameNumberString);
                     databaseReference.child("Users").child(username).child("isBikeCreated").setValue("true");
 
                     Toast.makeText(CreateBikeActivity.this, "Bike Created", Toast.LENGTH_SHORT).show();
