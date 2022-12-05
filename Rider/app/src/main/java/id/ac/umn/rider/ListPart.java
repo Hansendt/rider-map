@@ -11,6 +11,7 @@ public class ListPart extends AppCompatActivity {
 
     private String username;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
