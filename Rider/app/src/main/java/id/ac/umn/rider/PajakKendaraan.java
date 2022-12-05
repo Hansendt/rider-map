@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class PajakKendaraan extends AppCompatActivity {
@@ -18,6 +22,8 @@ public class PajakKendaraan extends AppCompatActivity {
 
     TextView tanggalLama, tanggalBaru;
     Button updateTanggal;
+    String tanggalBayarTerakhir;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,28 +46,12 @@ public class PajakKendaraan extends AppCompatActivity {
         });
     }
 
-//    public void update(View view) {
-//        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(android.widget.DatePicker datePicker, int year, int month, int day) {
-//                String date = day + "/" + (month + 1) + "/" + year;
-//                String date2 = day + "/" + (month + 1) + "/" + (year+5);
-////                Intent intent = new Intent(PajakKendaraan.this, Reminder.class);
-////                intent.putExtra("date", date);
-////                startActivity(intent);
-//                tanggalLama.setText(date);
-//                tanggalBaru.setText(date2);
-//            }
-//        }, 2021, 0, 1);
-//    }
-
     public void confirm(View view) {
+        tanggalBayarTerakhir = tanggalLama.getText().toString();
+        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("Tanggal Bayar Terakhir").setValue(tanggalBayarTerakhir);
+
+
         Intent intent = new Intent(PajakKendaraan.this, BikeDetail.class);
-//        Bundle args = new Bundle();
-//        reminderList.add(new Reminder("pajak", "20 Mei", "20 Mei"));
-//        args.putSerializable("ARRAYLIST",(ArrayList<Reminder>) reminderList);
-//        intent.putExtra("BUNDLE",args);
-        intent.putExtra("methodName", "addReminder");
         startActivity(intent);
         finish();
     }

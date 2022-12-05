@@ -25,7 +25,7 @@ public class BikeDetail extends AppCompatActivity {
 
     ActionBar actionBar;
     Button btnList, btnPajak, back;
-    TextView bikeName, bikeBrand, bikeModel, bikeYear, bikeCC, bikeFrameNum;
+    TextView bikeName, bikeBrand, bikeModel, bikePlate, bikeYear, bikeCC, bikeFrameNum;
     String userUID;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
     private FirebaseUser user;
@@ -38,6 +38,7 @@ public class BikeDetail extends AppCompatActivity {
         bikeName = findViewById(R.id.name);
         bikeBrand = findViewById(R.id.brand);
         bikeModel = findViewById(R.id.model);
+        bikePlate = findViewById(R.id.plate);
         bikeYear = findViewById(R.id.year);
         bikeCC = findViewById(R.id.cc);
         bikeFrameNum = findViewById(R.id.frameNum);
@@ -55,6 +56,7 @@ public class BikeDetail extends AppCompatActivity {
                 bikeName.setText(snapshot.child(userUID).child("Bike").child("vehicleName").getValue().toString());
                 bikeBrand.setText(snapshot.child(userUID).child("Bike").child("vehicleBrand").getValue().toString());
                 bikeModel.setText(snapshot.child(userUID).child("Bike").child("vehicleModel").getValue().toString());
+                bikePlate.setText(snapshot.child(userUID).child("Bike").child("vehiclePlate").getValue().toString());
                 bikeYear.setText(snapshot.child(userUID).child("Bike").child("vehicleYear").getValue().toString());
                 bikeCC.setText(cc);
                 bikeFrameNum.setText(snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue().toString());
