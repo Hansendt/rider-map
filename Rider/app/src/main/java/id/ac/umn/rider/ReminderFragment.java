@@ -2,6 +2,7 @@ package id.ac.umn.rider;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 
@@ -17,6 +24,7 @@ public class ReminderFragment extends Fragment {
 
     private ArrayList<Reminder> reminderArrayList;
     private RecyclerView recyclerView;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +49,29 @@ public class ReminderFragment extends Fragment {
     private void dataInitialized() {
 
         reminderArrayList = new ArrayList<>();
+        databaseReference.child("Users").child("Reminder").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String name = dataSnapshot.getKey();
+                    String date = dataSnapshot.getValue().toString();
+                    String year = date.substring(6);
+                    Integer yearOptimal = Integer.parseInt(year)+5;
+                    year = yearOptimal.toString();
+                    String dateOptimal = date.substring(0,2)+"/"+date.substring(3,5)+"/"+year;
+
+
+                    reminderArrayList.add(new Reminder(name, date, dateOptimal));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+
 //        reminderArrayList.add(new Reminder("Oli", "2021-05-01", "2021-05-05"));
         reminderArrayList.add(new Reminder("Ban", "2021-05-01", "2021-05-05"));
 

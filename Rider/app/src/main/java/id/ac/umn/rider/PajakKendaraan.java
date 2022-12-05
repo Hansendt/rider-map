@@ -48,7 +48,7 @@ public class PajakKendaraan extends AppCompatActivity {
 
     public void confirm(View view) {
         tanggalBayarTerakhir = tanggalLama.getText().toString();
-        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("Tanggal Bayar Terakhir").setValue(tanggalBayarTerakhir);
+        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").setValue(tanggalBayarTerakhir);
 
 
         Intent intent = new Intent(PajakKendaraan.this, BikeDetail.class);
