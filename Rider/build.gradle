@@ -23,3 +23,11 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+allprojects {
+    repositories {
+        google()
+        mavenCentral() // For ImagePicker library, this line is enough. Although, it has been published on jitpack as well
+        maven { url "https://jitpack.io" }  //Make sure to add this in your project for uCrop - an internal library
+    }
+}
+

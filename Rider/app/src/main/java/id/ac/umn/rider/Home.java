@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.google.android.gms.cast.framework.media.ImagePicker;
+import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,7 +46,6 @@ public class Home extends AppCompatActivity {
     String isBikeCreated;
     boolean isBikeCreatedBoolean;
     ArrayList<Reminder> reminderList;
-//    Button profile;
     ImageView profilePicture;
 
 
@@ -58,17 +59,8 @@ public class Home extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
         usernameTextView.setText("Hello, " + username + "!");
 
-//        profile = findViewById(R.id.profile);
         profilePicture = findViewById(R.id.profilePicture);
 
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ImagePicker.with(Home.this)
-//                        .crop()
-//                        .start();
-//            }
-//        });
 
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -145,11 +137,65 @@ public class Home extends AppCompatActivity {
 
     }
 
-//    public void changeProfilePicture(View view) {
-//        ImagePicker.with(Home.this)
-//                .crop()
-//                .start();
-//    }
+    public void changeProfilePicture(View view) {
+        com.github.dhaval2404.imagepicker.ImagePicker.with(Home.this)
+                .crop()	//User can only select image from Gallery
+                .start();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            Uri uri = data.getData();
+            profilePicture.setImageURI(uri);
+        } else if (resultCode == com.github.dhaval2404.imagepicker.ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, com.github.dhaval2404.imagepicker.ImagePicker.RESULT_ERROR, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+        }
+
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.child(username).exists()) {
+                            vehicleNameString = snapshot.child(username).child("Bike").child("vehicleName").getValue().toString();
+                            vehicleBrandString = snapshot.child(username).child("Bike").child("vehicleBrand").getValue().toString();
+                            vehicleModelString = snapshot.child(username).child("Bike").child("vehicleModel").getValue().toString();
+                            vehicleYearString = snapshot.child(username).child("Bike").child("vehicleYear").getValue().toString();
+                            vehicleColorString = snapshot.child(username).child("Bike").child("vehicleColor").getValue().toString();
+                            vehiclePlateString = snapshot.child(username).child("Bike").child("vehiclePlate").getValue().toString();
+                            cylinderCapacityString = snapshot.child(username).child("Bike").child("cylinderCapacity").getValue().toString();
+                            vehicleFrameNumberString = snapshot.child(username).child("Bike").child("vehicleFrameNumber").getValue().toString();
+
+                            BikeCreatedFragment bikeCreatedFragment = new BikeCreatedFragment();
+                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("vehicleName", vehicleNameString);
+                            bundle.putString("vehicleBrand", vehicleBrandString);
+                            bundle.putString("vehicleModel", vehicleModelString);
+                            bundle.putString("vehicleColor", vehicleColorString);
+                            bundle.putString("vehicleYear", vehicleYearString);
+                            bundle.putString("vehiclePlate", vehiclePlateString);
+                            bundle.putString("cylinderCapacity", cylinderCapacityString);
+                            bundle.putString("vehicleFrameNumber", vehicleFrameNumberString);
+                            bikeCreatedFragment.setArguments(bundle);
+                            transaction.replace(R.id.frameLayout, bikeCreatedFragment);
+                            transaction.commitAllowingStateLoss();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Home.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
+    }
+
 
     @Override
     protected void onRestart() {
@@ -187,7 +233,7 @@ public class Home extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout2, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     public void createBike(View view) {
@@ -196,52 +242,7 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        Uri uri = data.getData();
-        profilePicture.setImageURI(uri);
-
-        if (requestCode == 1) {
-            if(resultCode == RESULT_OK) {
-                databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.child(username).exists()) {
-                            vehicleNameString = snapshot.child(username).child("Bike").child("vehicleName").getValue().toString();
-                            vehicleBrandString = snapshot.child(username).child("Bike").child("vehicleBrand").getValue().toString();
-                            vehicleModelString = snapshot.child(username).child("Bike").child("vehicleModel").getValue().toString();
-                            vehicleYearString = snapshot.child(username).child("Bike").child("vehicleYear").getValue().toString();
-                            vehicleColorString = snapshot.child(username).child("Bike").child("vehicleColor").getValue().toString();
-                            vehiclePlateString = snapshot.child(username).child("Bike").child("vehiclePlate").getValue().toString();
-                            cylinderCapacityString = snapshot.child(username).child("Bike").child("cylinderCapacity").getValue().toString();
-                            vehicleFrameNumberString = snapshot.child(username).child("Bike").child("vehicleFrameNumber").getValue().toString();
-
-                            BikeCreatedFragment bikeCreatedFragment = new BikeCreatedFragment();
-                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("vehicleName", vehicleNameString);
-                            bundle.putString("vehicleBrand", vehicleBrandString);
-                            bundle.putString("vehicleModel", vehicleModelString);
-                            bundle.putString("vehicleColor", vehicleColorString);
-                            bundle.putString("vehicleYear", vehicleYearString);
-                            bundle.putString("vehiclePlate", vehiclePlateString);
-                            bundle.putString("cylinderCapacity", cylinderCapacityString);
-                            bundle.putString("vehicleFrameNumber", vehicleFrameNumberString);
-                            bikeCreatedFragment.setArguments(bundle);
-                            transaction.replace(R.id.frameLayout, bikeCreatedFragment);
-                            transaction.commit();
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Home.this, "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        }
-    }
     public void bikeInfo(View view) {
         Intent intentBike = new Intent(this, BikeDetail.class);
         intentBike.putExtra("username", username);
