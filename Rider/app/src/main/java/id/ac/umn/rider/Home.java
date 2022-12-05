@@ -85,7 +85,7 @@ public class Home extends AppCompatActivity {
                     vehicleFrameNumberString = snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue(String.class);
 
 
-                    if (snapshot.child(userUID).child("Bike").child("listPart").exists()) {
+                    if (snapshot.child(userUID).child("Reminder").exists()) {
                         replaceFragmentReminder(new ReminderFragment());
                     } else{
                         replaceFragmentReminder(new NoReminderFragment());
