@@ -84,6 +84,12 @@ public class Home extends AppCompatActivity {
                     cylinderCapacityString = snapshot.child(userUID).child("Bike").child("cylinderCapacity").getValue(String.class);
                     vehicleFrameNumberString = snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue(String.class);
 
+
+                    if (snapshot.child(userUID).child("Bike").child("listPart").exists()) {
+                        replaceFragmentReminder(new ReminderFragment());
+                    } else{
+                        replaceFragmentReminder(new NoReminderFragment());
+                    }
                     BikeCreatedFragment bikeCreatedFragment = new BikeCreatedFragment();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     Bundle bundle = new Bundle();
@@ -207,7 +213,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        replaceFragmentReminder(new ReminderFragment());
+//        replaceFragmentReminder(new ReminderFragment());
 //        Intent intent = getIntent();
 //        Bundle args = intent.getBundleExtra("BUNDLE");
 ////        reminder = (ArrayList<Reminder>) args.getSerializable("ARRAYLIST");

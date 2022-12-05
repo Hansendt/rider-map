@@ -44,8 +44,8 @@ public class BikeDetail extends AppCompatActivity {
         btnList = findViewById(R.id.listPartButton);
         btnPajak = findViewById(R.id.pajakButton);
         back = findViewById(R.id.toHome);
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
         userUID = user.getUid();
 
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
