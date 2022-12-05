@@ -3,6 +3,7 @@ package id.ac.umn.rider;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,9 +29,12 @@ public class Login extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     private ImageButton btnBack;
-    private EditText inUsername, inPass;
+    private EditText inEmail, inPass;
     private TextView goSignup;
     private Button btnLogin;
+
+    private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +43,16 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         btnBack = findViewById(R.id.btnBack);
-        inUsername = findViewById(R.id.inUsername);
+        inEmail = findViewById(R.id.inEmail);
         inPass = findViewById(R.id.inPass);
         goSignup = findViewById(R.id.goSignup);
         btnLogin = findViewById(R.id.btnLogin);
+
+        mAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(Login.this);
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("We are logging you in");
+        progressDialog.setCancelable(false);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,39 +73,47 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username = inUsername.getText().toString();
+                final String email = inEmail.getText().toString();
                 final String pass = inPass.getText().toString();
 
-                if (username.isEmpty() || pass.isEmpty()) {
+                if (email.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(Login.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 } else{
-                    databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.child(username).exists()) {
-                                final String getPass = snapshot.child(username).child("Password").getValue(String.class);
-                                if(getPass.equals(pass)){
-                                    Intent inHome = new Intent(Login.this, Home.class);
-                                    inHome.putExtra("username", username);
-                                    startActivity(inHome);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            else {
-                                Toast.makeText(Login.this, "Email not found", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    login(email, pass);
                 }
             }
         });
+    }
+
+    private void login(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful() && task.getResult() != null){
+                    if(task.getResult() != null){
+                        reload();
+                    }
+                    else{
+                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void reload(){
+        startActivity(new Intent(getApplicationContext(), Home.class));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
     }
 }

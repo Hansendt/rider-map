@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class Welcome_2 extends AppCompatActivity {
 
     private Button btnLogin, btnSignup;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,5 +41,19 @@ public class Welcome_2 extends AppCompatActivity {
         });
 
 
+    }
+
+    private void reload(){
+        startActivity(new Intent(getApplicationContext(), Home.class));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
     }
 }

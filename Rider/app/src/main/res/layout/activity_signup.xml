@@ -143,10 +143,10 @@
         app:boxStrokeColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signUsername"
+            android:id="@+id/signEmailConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Confirm Email"
             android:textColor="@color/white"
             android:textSize="13sp"/>
 

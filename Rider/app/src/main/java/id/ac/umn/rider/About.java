@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class About extends AppCompatActivity {
 
@@ -51,8 +52,9 @@ public class About extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent keluar = new Intent(About.this, MainActivity.class);
-                startActivity(keluar);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
             }
         });
     }

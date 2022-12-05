@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,8 +26,9 @@ public class BikeDetail extends AppCompatActivity {
     ActionBar actionBar;
     Button btnList, btnPajak, back;
     TextView bikeName, bikeBrand, bikeModel, bikeYear, bikeCC, bikeFrameNum;
-    String username;
+    String userUID;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +44,20 @@ public class BikeDetail extends AppCompatActivity {
         btnList = findViewById(R.id.listPartButton);
         btnPajak = findViewById(R.id.pajakButton);
         back = findViewById(R.id.toHome);
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        Intent intent = getIntent();
-        username = intent.getStringExtra("username");
+        userUID = user.getUid();
 
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                bikeName.setText(snapshot.child(username).child("Bike").child("vehicleName").getValue().toString());
-                bikeBrand.setText(snapshot.child(username).child("Bike").child("vehicleBrand").getValue().toString());
-                bikeModel.setText(snapshot.child(username).child("Bike").child("vehicleModel").getValue().toString());
-                bikeYear.setText(snapshot.child(username).child("Bike").child("vehicleYear").getValue().toString());
-                bikeCC.setText(snapshot.child(username).child("Bike").child("cylinderCapacity").getValue().toString() + " cc");
-                bikeFrameNum.setText(snapshot.child(username).child("Bike").child("vehicleFrameNumber").getValue().toString());
+                final String cc = snapshot.child(userUID).child("Bike").child("cylinderCapacity").getValue().toString() + " cc";
+                bikeName.setText(snapshot.child(userUID).child("Bike").child("vehicleName").getValue().toString());
+                bikeBrand.setText(snapshot.child(userUID).child("Bike").child("vehicleBrand").getValue().toString());
+                bikeModel.setText(snapshot.child(userUID).child("Bike").child("vehicleModel").getValue().toString());
+                bikeYear.setText(snapshot.child(userUID).child("Bike").child("vehicleYear").getValue().toString());
+                bikeCC.setText(cc);
+                bikeFrameNum.setText(snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue().toString());
             }
 
             @Override
@@ -68,7 +72,6 @@ public class BikeDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BikeDetail.this, ListPart.class);
-                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
