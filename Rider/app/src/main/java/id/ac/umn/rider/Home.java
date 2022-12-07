@@ -213,7 +213,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-//        replaceFragmentReminder(new ReminderFragment());
+        replaceFragmentReminder(new ReminderFragment());
 //        Intent intent = getIntent();
 //        Bundle args = intent.getBundleExtra("BUNDLE");
 ////        reminder = (ArrayList<Reminder>) args.getSerializable("ARRAYLIST");

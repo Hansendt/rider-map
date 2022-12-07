@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="My Only Bike"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
             android:id="@+id/brand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Honda"
+            android:text=""
             android:textColor="@color/white"
             android:layout_weight="1"
             />
@@ -84,7 +84,7 @@
             android:id="@+id/model"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vario 125 KZR"
+            android:text=""
             android:textColor="@color/white"
             android:layout_weight="1"
             />
@@ -110,7 +110,7 @@
             android:id="@+id/plate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="B 10 ONG"
+            android:text=""
             android:textColor="@color/white"
             android:layout_weight="1"
             />
@@ -138,7 +138,7 @@
             android:id="@+id/cc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="125 cc"
+            android:text=""
             android:textColor="@color/white"
             android:layout_weight="1"
             />
@@ -165,7 +165,7 @@
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2012"
+            android:text=""
             android:textColor="@color/white"
             android:layout_weight="1"
             />
@@ -192,7 +192,7 @@
             android:id="@+id/frameNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="478392648932648"
+            android:text=""
             android:textColor="@color/white"
             android:layout_weight="1"
             />
