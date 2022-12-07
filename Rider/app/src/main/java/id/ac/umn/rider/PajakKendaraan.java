@@ -22,7 +22,7 @@ public class PajakKendaraan extends AppCompatActivity {
 
     TextView tanggalLama, tanggalBaru;
     Button updateTanggal;
-    String tanggalBayarTerakhir, day, monthOfYear;
+    String tanggal, tanggalBayarTerakhir, day, monthOfYear;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     @Override
@@ -59,7 +59,7 @@ public class PajakKendaraan extends AppCompatActivity {
     }
 
     public void confirm(View view) {
-        String tanggal = tanggalLama.getText().toString();
+        tanggal = tanggalLama.getText().toString();
         tanggalBayarTerakhir = day + "/" + monthOfYear + "/" + tanggal.substring(6);
         databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").setValue(tanggalBayarTerakhir);
 
