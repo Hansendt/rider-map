@@ -105,7 +105,6 @@ public class ReminderFragment extends Fragment {
         });
 
 //        reminderArrayList.add(new Reminder("Oli", "2021-05-01", "2021-05-05"));
-        reminderArrayList.add(new Reminder("Ban", "2021-05-01", "2021-05-05"));
 
     }
 

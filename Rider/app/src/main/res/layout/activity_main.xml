@@ -36,16 +36,16 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/next"
-        android:layout_margin="45dp"
-        app:fabSize="normal"
-        app:borderWidth="0dp"
-        app:elevation="6dp"
-        android:backgroundTint="@color/colorSecondary" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/next"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end|bottom"-->
+<!--        android:src="@drawable/next"-->
+<!--        android:layout_margin="45dp"-->
+<!--        app:fabSize="normal"-->
+<!--        app:borderWidth="0dp"-->
+<!--        app:elevation="6dp"-->
+<!--        android:backgroundTint="@color/colorSecondary" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

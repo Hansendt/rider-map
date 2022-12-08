@@ -26,5 +26,8 @@ public class Welcome_1 extends AppCompatActivity {
                 startActivity(intentLogo);
             }
         });
+
+
+
     }
 }

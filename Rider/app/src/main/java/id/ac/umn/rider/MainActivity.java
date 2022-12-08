@@ -11,8 +11,12 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,23 +24,36 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-//        btnLogo = findViewById(R.id.btnLogo);
-//
-//        btnLogo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, Welcome.class);
-//                startActivity(intent);
-//            }
-//        });
+        mAuth = FirebaseAuth.getInstance();
 
-        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.next);
-        myFab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Welcome.class);
-                startActivity(intent);
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    if(currentUser != null){
+                        reload();
+                    } else {
+                        Intent intent = new Intent(MainActivity.this, Welcome.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
             }
-        });
+        }; thread.start();
+
     }
+
+    private void reload(){
+        startActivity(new Intent(getApplicationContext(), Home.class));
+        finish();
+    }
+
+
+
 
 }
