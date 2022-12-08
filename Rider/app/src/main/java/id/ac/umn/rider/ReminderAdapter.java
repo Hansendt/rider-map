@@ -15,12 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyViewHolder>{
 
     Context context;
     ArrayList<Reminder> reminderList;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
+    private FirebaseUser user;
 
     public ReminderAdapter(Context context, ArrayList<Reminder> reminderList) {
         this.context = context;
@@ -32,6 +39,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.list_reminder, parent, false);
+        user = FirebaseAuth.getInstance().getCurrentUser();
         return new MyViewHolder((ViewGroup) v);
     }
 
@@ -66,6 +74,8 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
 
             reminderDelete.setOnClickListener(new View.OnClickListener() {
 //                reminderDelete.setImageResource(R.drawable.ic_baseline_check_box_24);
+                String userUID = user.getUid();
+
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder alert;
@@ -79,6 +89,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     reminderList.remove(getAdapterPosition());
+//                                    databaseReference.child("Users").child(userUID).child("reminder").child(reminderList.get(getAdapterPosition()).getReminderPart()).removeValue();
                                     notifyItemRemoved(getAdapterPosition());
                                 }
                             })

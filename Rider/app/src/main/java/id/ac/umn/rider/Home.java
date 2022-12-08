@@ -22,15 +22,21 @@ import android.widget.Toast;
 
 //import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.google.android.gms.cast.framework.media.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,7 +46,7 @@ public class Home extends AppCompatActivity {
 
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storage = FirebaseStorage.getInstance().getReference();
     private FirebaseUser user;
 
     TextView usernameTextView;
@@ -61,12 +67,18 @@ public class Home extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         userUID = user.getUid();
 
+
+
         usernameTextView = findViewById(R.id.userName);
         if (user.getDisplayName() != null) {
             usernameTextView.setText("Hello, " + user.getDisplayName() + "!");
         }
 
         profilePicture = findViewById(R.id.profilePicture);
+        Uri uri = user.getPhotoUrl();
+        if (uri != null) {
+            Picasso.get().load(uri).into(profilePicture);
+        }
 
 
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -163,6 +175,8 @@ public class Home extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             Uri uri = data.getData();
             profilePicture.setImageURI(uri);
+            user.updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(uri).build());
+
         } else if (resultCode == com.github.dhaval2404.imagepicker.ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, com.github.dhaval2404.imagepicker.ImagePicker.RESULT_ERROR, Toast.LENGTH_SHORT).show();
         } else {
@@ -210,17 +224,6 @@ public class Home extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        replaceFragmentReminder(new ReminderFragment());
-//        Intent intent = getIntent();
-//        Bundle args = intent.getBundleExtra("BUNDLE");
-////        reminder = (ArrayList<Reminder>) args.getSerializable("ARRAYLIST");
-//        if (reminder.size() > 0) {
-//            replaceFragmentReminder(new ReminderFragment());
-//        }
-    }
 
 //    @Override
 //    protected void onNewIntent(Intent intent) {
