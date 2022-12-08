@@ -51,7 +51,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView reminderImage;
         TextView reminderPart, reminderDate, reminderOptimalDate;
-        ImageView reminderDelete;
+        Button reminderDelete;
 
         public MyViewHolder(@NonNull ViewGroup itemView) {
             super(itemView);
@@ -59,6 +59,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
             reminderPart = itemView.findViewById(R.id.reminderPart);
             reminderDate = itemView.findViewById(R.id.reminderDate);
             reminderOptimalDate = itemView.findViewById(R.id.reminderOptimalDate);
+            reminderDelete = itemView.findViewById(R.id.reminderDelete);
 //            ImageView reminderDelete= (ImageView) findViewById(R.id.image);
 //            reminderDelete.setImageResource(R.drawable.my_image);
 

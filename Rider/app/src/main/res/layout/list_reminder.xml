@@ -86,13 +86,13 @@
 
 
                     </LinearLayout>
-                    <ImageView
+                    <Button
                         android:id="@+id/reminderDelete"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="30dp"
                         android:layout_weight="0.7"
-                        android:src="@drawable/ic_baseline_check_box_outline_blank_24"
+                        android:background="@drawable/ic_baseline_check_box_outline_blank_24"
                         android:layout_gravity="right"
                         android:onClick="markAsDone"/>
             </LinearLayout>
