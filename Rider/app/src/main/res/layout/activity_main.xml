@@ -13,27 +13,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
+        <ImageView
             android:id="@+id/btnLogo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="220dp"
-            android:background="@drawable/circle_button"
-            android:backgroundTint="@color/colorSecondary"
-            android:text="LOGO"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:text="Rider"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="40sp" />
     </LinearLayout>
 
 <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
@@ -49,3 +44,8 @@
 <!--        android:backgroundTint="@color/colorSecondary" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
