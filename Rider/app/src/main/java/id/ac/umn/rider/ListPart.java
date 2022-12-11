@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 public class ListPart extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class ListPart extends AppCompatActivity {
     }
 
     public void banDepan(View view) {
-        Intent intent = new Intent(ListPart.this, ListPartExt.class);
+        Intent intent = new Intent(ListPart.this, PartBanDepan.class);
         startActivity(intent);
     }
 
