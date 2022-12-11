@@ -36,7 +36,7 @@ public class PartBanDepan extends AppCompatActivity {
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(PartBanDepan.this, (view1, year, month, dayOfMonth) -> {
                     tanggalLama.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                    tanggalBaru.setText(dayOfMonth + "/" + (month + 1) + "/" + (year+5));
+                    tanggalBaru.setText(dayOfMonth + "/" + (month + 1) + "/" + (year+2));
                 }, 2021, 0, 1);
                 datePickerDialog.show();
             }
@@ -48,7 +48,8 @@ public class PartBanDepan extends AppCompatActivity {
         tanggalTerakhir = tanggalLama.getText().toString();
         tanggalOptimal = tanggalBaru.getText().toString();
 
-        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").setValue(tanggalTerakhir);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").child("date").setValue(tanggalTerakhir);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").child("dateOptimal").setValue(tanggalOptimal);
 
         Intent intent = new Intent(PartBanDepan.this, ListPart.class);
         startActivity(intent);

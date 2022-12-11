@@ -71,14 +71,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/colorPrimary"
             android:textColorHint="@color/white"
             android:layout_marginTop="20px"
             app:boxStrokeColor="@color/white">
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/vehicleModel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Cylinder Capacity (CC)"
                 android:textColor="@color/white"
+                android:inputType="number"
                 android:textSize="13sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,7 +153,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Year"
                 android:textColor="@color/white"
+                android:inputType="number"
                 android:textSize="13sp"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
