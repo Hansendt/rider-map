@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ListPartExt extends AppCompatActivity {
+public class PartBanDepan extends AppCompatActivity {
     TextView tanggalLama, tanggalBaru;
     Button updateTanggal;
     String tanggalTerakhir;
@@ -18,7 +18,7 @@ public class ListPartExt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_list_part_ext);
+        setContentView(R.layout.activity_list_part_bandepan);
 
         tanggalLama = findViewById(R.id.editText);
         tanggalBaru = findViewById(R.id.tanggalBaru);
@@ -27,7 +27,7 @@ public class ListPartExt extends AppCompatActivity {
         updateTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ListPartExt.this, (view1, year, month, dayOfMonth) -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PartBanDepan.this, (view1, year, month, dayOfMonth) -> {
                     tanggalLama.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     tanggalBaru.setText(dayOfMonth + "/" + (month + 1) + "/" + (year+5));
                 }, 2021, 0, 1);
@@ -37,7 +37,7 @@ public class ListPartExt extends AppCompatActivity {
     }
 
     public void confirm(View view) {
-        Intent intent = new Intent(ListPartExt.this, ListPart.class);
+        Intent intent = new Intent(PartBanDepan.this, ListPart.class);
         startActivity(intent);
         finish();
     }

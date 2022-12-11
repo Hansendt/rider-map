@@ -20,7 +20,7 @@
             android:name=".PajakKendaraan"
             android:exported="false" />
         <activity
-            android:name=".ListPartExt"
+            android:name=".PartBanDepan"
             android:exported="false" />
         <activity
             android:name=".ListPart"
