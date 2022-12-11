@@ -9,10 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class PartBanDepan extends AppCompatActivity {
     TextView tanggalLama, tanggalBaru;
     Button updateTanggal;
-    String tanggalTerakhir;
+    String tanggalTerakhir, tanggalOptimal;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,7 @@ public class PartBanDepan extends AppCompatActivity {
         tanggalLama = findViewById(R.id.editText);
         tanggalBaru = findViewById(R.id.tanggalBaru);
         updateTanggal = findViewById(R.id.update);
+        mAuth = FirebaseAuth.getInstance();
 
         updateTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +44,12 @@ public class PartBanDepan extends AppCompatActivity {
     }
 
     public void confirm(View view) {
+
+        tanggalTerakhir = tanggalLama.getText().toString();
+        tanggalOptimal = tanggalBaru.getText().toString();
+
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").setValue(tanggalTerakhir);
+
         Intent intent = new Intent(PartBanDepan.this, ListPart.class);
         startActivity(intent);
         finish();

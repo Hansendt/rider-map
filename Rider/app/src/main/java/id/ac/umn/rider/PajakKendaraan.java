@@ -22,7 +22,7 @@ public class PajakKendaraan extends AppCompatActivity {
 
     TextView tanggalLama, tanggalBaru;
     Button updateTanggal;
-    String tanggal, tanggalBayarTerakhir, day, monthOfYear;
+    String tanggal, tanggalBayarTerakhir, tanggalOptimal, day, monthOfYear;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     @Override
@@ -38,18 +38,6 @@ public class PajakKendaraan extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(PajakKendaraan.this, (view1, year, month, dayOfMonth) -> {
-                    if (dayOfMonth < 10){
-                        day = "0" + dayOfMonth;
-                    } else{
-                        day = String.valueOf(dayOfMonth);
-                    }
-
-                    if (month < 10){
-                        monthOfYear = "0" + month;
-                    } else{
-                        monthOfYear = String.valueOf(month);
-                    }
-
                     tanggalLama.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     tanggalBaru.setText(dayOfMonth + "/" + (month + 1) + "/" + (year+1));
                 }, 2021, 0, 1);
@@ -60,8 +48,9 @@ public class PajakKendaraan extends AppCompatActivity {
 
     public void confirm(View view) {
         tanggal = tanggalLama.getText().toString();
-        tanggalBayarTerakhir = day + "/" + monthOfYear + "/" + tanggal.substring(6);
-        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").setValue(tanggalBayarTerakhir);
+        tanggalOptimal = tanggalBaru.getText().toString();
+        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("date").setValue(tanggal);
+        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("dateOptimal").setValue(tanggalOptimal);
 
 
         Intent intent = new Intent(PajakKendaraan.this, BikeDetail.class);

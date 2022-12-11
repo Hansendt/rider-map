@@ -58,11 +58,8 @@ public class ReminderFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String name = dataSnapshot.getKey();
-                    String date = dataSnapshot.getValue().toString();
-                    String year = date.substring(6);
-                    Integer yearOptimal = Integer.parseInt(year)+1;
-                    year = yearOptimal.toString();
-                    String dateOptimal = date.substring(0,2)+"/"+date.substring(3,5)+"/"+year;
+                    String date = dataSnapshot.child("date").getValue().toString();
+                    String dateOptimal = dataSnapshot.child("dateOptimal").getValue().toString();
 
                     reminderArrayList.add(new Reminder(name, date, dateOptimal));
                 }
@@ -78,35 +75,7 @@ public class ReminderFragment extends Fragment {
 
     }
 
-    private void dataInitialized() {
 
-        reminderArrayList = new ArrayList<>();
-        databaseReference.child("Users").child("Reminder").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String name = dataSnapshot.getKey();
-                    String date = dataSnapshot.getValue().toString();
-                    String year = date.substring(6);
-                    Integer yearOptimal = Integer.parseInt(year)+5;
-                    year = yearOptimal.toString();
-                    String dateOptimal = date.substring(0,2)+"/"+date.substring(3,5)+"/"+year;
-
-
-                    reminderArrayList.add(new Reminder(name, date, dateOptimal));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
-
-//        reminderArrayList.add(new Reminder("Oli", "2021-05-01", "2021-05-05"));
-
-    }
 
 
 }
