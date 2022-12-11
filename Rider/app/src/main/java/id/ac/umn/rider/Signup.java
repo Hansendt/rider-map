@@ -1,6 +1,7 @@
 package id.ac.umn.rider;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -39,6 +40,7 @@ public class Signup extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     ImageView profilePicture;
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +151,7 @@ public class Signup extends AppCompatActivity {
                     if (user != null){
                         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(fname + " " + lname)
+                                .setPhotoUri(uri)
                                 .build();
 
                         user.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -169,6 +172,7 @@ public class Signup extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
             }
         });
@@ -186,6 +190,21 @@ public class Signup extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             reload();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            uri = data.getData();
+            profilePicture.setImageURI(uri);
+
+        } else if (resultCode == com.github.dhaval2404.imagepicker.ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, com.github.dhaval2404.imagepicker.ImagePicker.RESULT_ERROR, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 }
