@@ -156,9 +156,6 @@ public class Home extends AppCompatActivity {
                 return false;
             }
         });
-//        if (reminder.size() == 0) {
-//            replaceFragmentReminder(new ReminderFragment());
-//        }
 
     }
 
@@ -261,5 +258,9 @@ public class Home extends AppCompatActivity {
     public void bikeInfo(View view) {
         Intent intentBike = new Intent(this, BikeDetail.class);
         startActivity(intentBike);
+    }
+
+    protected void onRestart() {
+        super.onRestart();
     }
 }
