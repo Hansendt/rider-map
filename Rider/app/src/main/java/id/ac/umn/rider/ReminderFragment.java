@@ -60,8 +60,9 @@ public class ReminderFragment extends Fragment {
                     String name = dataSnapshot.getKey();
                     String date = dataSnapshot.child("date").getValue().toString();
                     String dateOptimal = dataSnapshot.child("dateOptimal").getValue().toString();
+                    int image = dataSnapshot.child("image").getValue(Integer.class);
 
-                    reminderArrayList.add(new Reminder(name, date, dateOptimal));
+                    reminderArrayList.add(new Reminder(name, date, dateOptimal, image));
                 }
                 reminderAdapter.notifyDataSetChanged();
             }

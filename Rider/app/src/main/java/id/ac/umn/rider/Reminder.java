@@ -6,10 +6,11 @@ public class Reminder {
     private String reminderOptimalDate;
     private int reminderImage;
 
-    public Reminder(String reminderPart, String reminderDate, String reminderOptimalDate) {
+    public Reminder(String reminderPart, String reminderDate, String reminderOptimalDate, int reminderImage) {
         this.reminderPart = reminderPart;
         this.reminderDate = reminderDate;
         this.reminderOptimalDate = reminderOptimalDate;
+        this.reminderImage = reminderImage;
     }
 
     public String getReminderPart() {
@@ -43,4 +44,5 @@ public class Reminder {
     public void setReminderImage(int reminderImage) {
         this.reminderImage = reminderImage;
     }
+
 }

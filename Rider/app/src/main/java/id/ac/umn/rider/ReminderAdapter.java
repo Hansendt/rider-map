@@ -51,6 +51,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull ReminderAdapter.MyViewHolder holder, int position) {
         Reminder reminder = reminderList.get(position);
+        holder.reminderImage.setImageResource(reminder.getReminderImage());
         holder.reminderPart.setText(reminder.getReminderPart());
         holder.reminderDate.setText(reminder.getReminderDate());
         holder.reminderOptimalDate.setText(reminder.getReminderOptimalDate());

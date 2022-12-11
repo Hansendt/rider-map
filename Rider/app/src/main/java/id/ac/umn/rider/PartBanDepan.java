@@ -48,8 +48,11 @@ public class PartBanDepan extends AppCompatActivity {
         tanggalTerakhir = tanggalLama.getText().toString();
         tanggalOptimal = tanggalBaru.getText().toString();
 
+        int image = R.drawable.ban_depan;
+
         databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").child("date").setValue(tanggalTerakhir);
         databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").child("dateOptimal").setValue(tanggalOptimal);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Ban Depan").child("image").setValue(image);
 
         Intent intent = new Intent(PartBanDepan.this, ListPart.class);
         startActivity(intent);
