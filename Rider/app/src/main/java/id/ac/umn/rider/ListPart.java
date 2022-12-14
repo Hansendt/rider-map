@@ -1,9 +1,13 @@
 package id.ac.umn.rider;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class ListPart extends AppCompatActivity {
@@ -14,11 +18,27 @@ public class ListPart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_list_part);
 
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setHomeAsUpIndicator(R.drawable.back);
+        actionBar.setTitle("List Part");
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void banDepan(View view) {

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,7 +34,16 @@ public class BikeDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        actionBar = getSupportActionBar();
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setHomeAsUpIndicator(R.drawable.back);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.activity_bike_detail);
         bikeName = findViewById(R.id.name);
         bikeBrand = findViewById(R.id.brand);
@@ -44,7 +54,6 @@ public class BikeDetail extends AppCompatActivity {
         bikeFrameNum = findViewById(R.id.frameNum);
         btnList = findViewById(R.id.listPartButton);
         btnPajak = findViewById(R.id.pajakButton);
-        back = findViewById(R.id.toHome);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         userUID = user.getUid();
@@ -86,14 +95,15 @@ public class BikeDetail extends AppCompatActivity {
                 finish();
             }
         });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BikeDetail.this, Home.class);
-                startActivityForResult(intent, 2);
-            }
-        });
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

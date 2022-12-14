@@ -8,30 +8,30 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:layout_marginTop="50dp">-->
 
-            <Button
-                android:id="@+id/toDetail"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/back"
-                android:src="@drawable/back"
-                android:onClick="toDetail"/>
+<!--            <Button-->
+<!--                android:id="@+id/toDetail"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:background="@drawable/back"-->
+<!--                android:src="@drawable/back"-->
+<!--                android:onClick="toDetail"/>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/white"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                android:text="List Part"/>
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="27sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="List Part"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="wrap_content"

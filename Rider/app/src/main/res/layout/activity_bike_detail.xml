@@ -8,18 +8,11 @@
     tools:context=".BikeDetail">
 
 
-    <Button
-        android:id="@+id/toHome"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/back"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:text=""
         android:textColor="@color/white"
         android:textSize="40sp"

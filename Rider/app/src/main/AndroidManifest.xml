@@ -24,7 +24,7 @@
             android:exported="false" />
         <activity
             android:name=".ListPart"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".BikeDetail"
             android:exported="false" />
