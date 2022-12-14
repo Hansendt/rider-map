@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -142,18 +141,9 @@ public class WorkshopMap extends FragmentActivity implements OnMapReadyCallback 
         LocationCallback locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
-                Toast.makeText(getApplicationContext(), "Location result is =" +
-                        locationResult, Toast.LENGTH_LONG).show();
 
                 if(locationResult == null) {
-                    Toast.makeText(getApplicationContext(), "Current location is", Toast.LENGTH_LONG).show();
                     return;
-                }
-
-                for(Location location:locationResult.getLocations()) {
-                    if(locationResult == null) {
-                        Toast.makeText(getApplicationContext(), "Current location is" + location.getLongitude(), Toast.LENGTH_LONG).show();
-                    }
                 }
             }
         };
