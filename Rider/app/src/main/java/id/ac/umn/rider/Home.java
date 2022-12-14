@@ -141,11 +141,11 @@ public class Home extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.pom:
-                        startActivity(new Intent(getApplicationContext(),Spbu.class));
+                        startActivity(new Intent(getApplicationContext(),SpbuMap.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.workshop:
-                        startActivity(new Intent(getApplicationContext(),Workshop.class));
+                        startActivity(new Intent(getApplicationContext(),WorkshopMap.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about:

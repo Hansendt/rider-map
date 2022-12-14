@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="id.ac.umn.rider">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,11 +13,35 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rider"
         tools:targetApi="31">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
+
+        <activity
+            android:name=".WorkshopMap"
+            android:exported="false"
+            android:label="@string/title_activity_workshop_map" />
+        <activity
+            android:name=".SpbuMap"
+            android:exported="false"
+            android:label="@string/title_activity_spbu_map" />
         <activity
             android:name=".PajakKendaraan"
             android:exported="false" />
@@ -42,15 +68,6 @@
             android:exported="false" />
         <activity
             android:name=".About"
-            android:exported="false" />
-        <activity
-            android:name=".WorkshopDetail"
-            android:exported="false" />
-        <activity
-            android:name=".Workshop"
-            android:exported="false" />
-        <activity
-            android:name=".Spbu"
             android:exported="false" />
         <activity
             android:name=".CreateBikeActivity"
