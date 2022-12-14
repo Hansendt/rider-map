@@ -101,7 +101,7 @@
             android:layout_height="120dp">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_centerVertical="true">
@@ -110,7 +110,7 @@
                     android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_baseline_add_circle_outline_24"
+                    android:src="@drawable/new_profile"
                     android:onClick="newProfilePicture"/>
             </androidx.cardview.widget.CardView>
 
