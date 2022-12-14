@@ -54,7 +54,6 @@ public class Home extends AppCompatActivity {
     String vehicleNameString, vehicleBrandString, vehicleModelString, vehicleYearString, vehicleColorString, vehiclePlateString, cylinderCapacityString, vehicleFrameNumberString;
     String isBikeCreated;
     boolean isBikeCreatedBoolean;
-    ArrayList<Reminder> reminderList;
     ImageView profilePicture;
 
 
@@ -221,19 +220,6 @@ public class Home extends AppCompatActivity {
     }
 
 
-
-//    @Override
-//    protected void onNewIntent(Intent intent) {
-//        super.onNewIntent(intent);
-//        if(intent.getStringExtra("methodName").equals("addReminder")){
-//            addReminder();
-//        }
-//    }
-
-//    public void addReminder(){
-//        reminderList.add(new Reminder("test", "test", "test"));
-//        replaceFragmentReminder(new ReminderFragment());
-//    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
