@@ -97,30 +97,6 @@ public class Signup extends AppCompatActivity {
                 }
                 else {
                     signUp(fname, lname, email, pass);
-//                    databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            if (snapshot.child(username).exists()){
-//                                Toast.makeText(Signup.this, "Email already exists", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                //send data to firebase
-//                                databaseReference.child("Users").child(username).child("First Name").setValue(fname);
-//                                databaseReference.child("Users").child(username).child("Last Name").setValue(lname);
-//                                databaseReference.child("Users").child(username).child("Email").setValue(email);
-//                                databaseReference.child("Users").child(username).child("Password").setValue(pass);
-//                                databaseReference.child("Users").child(username).child("isBikeCreated").setValue("false");
-//
-//                                Toast.makeText(Signup.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
-//                                finish();
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
 
                 }
             }
@@ -180,7 +156,7 @@ public class Signup extends AppCompatActivity {
     }
 
     private void reload(){
-        startActivity(new Intent(getApplicationContext(), Welcome_2.class));
+        startActivity(new Intent(getApplicationContext(), Login.class));
     }
 
     @Override

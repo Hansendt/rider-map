@@ -90,12 +90,21 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful() && task.getResult() != null){
-                    if(task.getResult() != null){
-                        reload();
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (user.isEmailVerified()){
+                        if(task.getResult() != null){
+                            reload();
+                        }
+                        else{
+                            Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else{
-                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        user.sendEmailVerification();
+                        Toast.makeText(Login.this, "Please check your email to verify!", Toast.LENGTH_SHORT).show();
                     }
+
                 }else{
                     Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 }
@@ -113,7 +122,9 @@ public class Login extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            reload();
+            if (currentUser.isEmailVerified()){
+                reload();
+            }
         }
     }
 }
