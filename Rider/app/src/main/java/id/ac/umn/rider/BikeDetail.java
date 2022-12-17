@@ -42,7 +42,7 @@ public class BikeDetail extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setHomeAsUpIndicator(R.drawable.back);
-        actionBar.setDisplayShowTitleEnabled(false);
+
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
 
         actionBar.setDisplayHomeAsUpEnabled(true);
