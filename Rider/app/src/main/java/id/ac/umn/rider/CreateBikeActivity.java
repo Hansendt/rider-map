@@ -171,6 +171,9 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
             databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    int photo;
+                    photo = getResources().getIdentifier(vehicleModelString.toLowerCase().replace(' ', '_'), "drawable", getPackageName());
                     databaseReference.child("Users").child(userUID).child("Bike").child("vehicleName").setValue(vehicleNameString);
                     databaseReference.child("Users").child(userUID).child("Bike").child("vehicleBrand").setValue(vehicleBrandString);
                     databaseReference.child("Users").child(userUID).child("Bike").child("vehicleModel").setValue(vehicleModelString);
@@ -179,6 +182,7 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
                     databaseReference.child("Users").child(userUID).child("Bike").child("vehiclePlate").setValue(vehiclePlateString);
                     databaseReference.child("Users").child(userUID).child("Bike").child("cylinderCapacity").setValue(cylinderCapacityString);
                     databaseReference.child("Users").child(userUID).child("Bike").child("vehicleFrameNumber").setValue(vehicleFrameNumberString);
+                    databaseReference.child("Users").child(userUID).child("Bike").child("vehiclePhoto").setValue(photo);
                     databaseReference.child("Users").child(userUID).child("isBikeCreated").setValue("true");
 
                     Toast.makeText(CreateBikeActivity.this, "Bike Created", Toast.LENGTH_SHORT).show();

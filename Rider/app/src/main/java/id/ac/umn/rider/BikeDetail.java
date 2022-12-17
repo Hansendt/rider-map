@@ -8,10 +8,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +29,7 @@ public class BikeDetail extends AppCompatActivity {
     ActionBar actionBar;
     Button btnList, btnPajak, back;
     TextView bikeName, bikeBrand, bikeModel, bikePlate, bikeYear, bikeCC, bikeFrameNum;
+    ImageView bikeImage;
     String userUID;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
     private FirebaseUser user;
@@ -51,6 +54,7 @@ public class BikeDetail extends AppCompatActivity {
         bikePlate = findViewById(R.id.plate);
         bikeYear = findViewById(R.id.year);
         bikeCC = findViewById(R.id.cc);
+        bikeImage = findViewById(R.id.image);
         bikeFrameNum = findViewById(R.id.frameNum);
         btnList = findViewById(R.id.listPartButton);
         btnPajak = findViewById(R.id.pajakButton);
@@ -61,13 +65,13 @@ public class BikeDetail extends AppCompatActivity {
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final String cc = snapshot.child(userUID).child("Bike").child("cylinderCapacity").getValue().toString() + " cc";
                 bikeName.setText(snapshot.child(userUID).child("Bike").child("vehicleName").getValue().toString());
+                bikeImage.setImageResource(snapshot.child(userUID).child("Bike").child("vehiclePhoto").getValue(Integer.class));
                 bikeBrand.setText(snapshot.child(userUID).child("Bike").child("vehicleBrand").getValue().toString());
                 bikeModel.setText(snapshot.child(userUID).child("Bike").child("vehicleModel").getValue().toString());
                 bikePlate.setText(snapshot.child(userUID).child("Bike").child("vehiclePlate").getValue().toString());
                 bikeYear.setText(snapshot.child(userUID).child("Bike").child("vehicleYear").getValue().toString());
-                bikeCC.setText(cc);
+                bikeCC.setText(snapshot.child(userUID).child("Bike").child("cylinderCapacity").getValue().toString() + " cc");
                 bikeFrameNum.setText(snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue().toString());
             }
 

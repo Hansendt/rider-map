@@ -1,5 +1,7 @@
 package id.ac.umn.rider;
 
+import static java.sql.DriverManager.println;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class BikeCreatedFragment extends Fragment {
@@ -19,6 +22,7 @@ public class BikeCreatedFragment extends Fragment {
     private String plate;
     private String cc;
     private String year;
+    private Integer image;
 
     private TextView bikeName;
     private TextView bikeBrand;
@@ -26,6 +30,7 @@ public class BikeCreatedFragment extends Fragment {
     private TextView plateNumber;
     private TextView cyclinderCapacity;
     private TextView yearOfManufacture;
+    private ImageView bikeImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +44,7 @@ public class BikeCreatedFragment extends Fragment {
         plateNumber = view.findViewById(R.id.bikePlate);
         cyclinderCapacity = view.findViewById(R.id.bikeCC);
         yearOfManufacture = view.findViewById(R.id.bikeYear);
+        bikeImage = view.findViewById(R.id.bikeImage);
 
         Bundle bundle = getArguments();
 
@@ -49,6 +55,8 @@ public class BikeCreatedFragment extends Fragment {
             plate = bundle.getString("vehiclePlate");
             cc = bundle.getString("cylinderCapacity");
             year = bundle.getString("vehicleYear");
+            image = bundle.getInt("vehiclePhoto");
+
         }
 
         bikeName.setText(Name);
@@ -57,6 +65,7 @@ public class BikeCreatedFragment extends Fragment {
         plateNumber.setText(plate);
         cyclinderCapacity.setText(cc + " cc");
         yearOfManufacture.setText(year);
+        bikeImage.setImageResource(image);
 
         return view;
     }

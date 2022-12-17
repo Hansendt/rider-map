@@ -1,8 +1,5 @@
 package id.ac.umn.rider;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,15 +12,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.google.android.gms.cast.framework.media.ImagePicker;
-import com.google.android.gms.cast.framework.media.ImagePicker;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,12 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-
-import id.ac.umn.rider.databinding.ActivityMainBinding;
 
 public class Home extends AppCompatActivity {
 
@@ -51,7 +39,15 @@ public class Home extends AppCompatActivity {
 
     TextView usernameTextView;
     String userUID;
-    String vehicleNameString, vehicleBrandString, vehicleModelString, vehicleYearString, vehicleColorString, vehiclePlateString, cylinderCapacityString, vehicleFrameNumberString;
+    String vehicleNameString;
+    String vehicleBrandString;
+    String vehicleModelString;
+    String vehicleYearString;
+    String vehicleColorString;
+    String vehiclePlateString;
+    String cylinderCapacityString;
+    String vehicleFrameNumberString;
+    Integer vehiclePhoto;
     String isBikeCreated;
     boolean isBikeCreatedBoolean;
     ImageView profilePicture;
@@ -94,6 +90,7 @@ public class Home extends AppCompatActivity {
                     vehiclePlateString = snapshot.child(userUID).child("Bike").child("vehiclePlate").getValue(String.class);
                     cylinderCapacityString = snapshot.child(userUID).child("Bike").child("cylinderCapacity").getValue(String.class);
                     vehicleFrameNumberString = snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue(String.class);
+                    vehiclePhoto = snapshot.child(userUID).child("Bike").child("vehiclePhoto").getValue(Integer.class);
 
 
                     if (snapshot.child(userUID).child("Reminder").exists()) {
@@ -112,6 +109,7 @@ public class Home extends AppCompatActivity {
                     bundle.putString("vehiclePlate", vehiclePlateString);
                     bundle.putString("cylinderCapacity", cylinderCapacityString);
                     bundle.putString("vehicleFrameNumber", vehicleFrameNumberString);
+                    bundle.putInt("vehiclePhoto", vehiclePhoto);
                     bikeCreatedFragment.setArguments(bundle);
                     transaction.replace(R.id.frameLayout, bikeCreatedFragment);
                     transaction.commit();
