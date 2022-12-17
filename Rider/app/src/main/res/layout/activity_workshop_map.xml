@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SpbuMap">
+    tools:context=".SpbuMap"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="215dp"
@@ -22,15 +23,15 @@
 
     </LinearLayout>
 
-      <fragment
+    <fragment
         android:id="@+id/map2"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_above="@id/bottom_navigation"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@+id/linearLayout2"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp" />
 
 
