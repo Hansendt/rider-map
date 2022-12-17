@@ -24,6 +24,7 @@ public class PajakKendaraan extends AppCompatActivity {
     TextView tanggalLama, tanggalBaru;
     Button updateTanggal;
     String tanggalTerakhir, tanggalOptimal;
+    FirebaseAuth mAuth;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     @Override
@@ -34,6 +35,7 @@ public class PajakKendaraan extends AppCompatActivity {
         tanggalLama = findViewById(R.id.editText);
         tanggalBaru = findViewById(R.id.tanggalBaru);
         updateTanggal = findViewById(R.id.update);
+        mAuth = FirebaseAuth.getInstance();
 
         updateTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +50,15 @@ public class PajakKendaraan extends AppCompatActivity {
     }
 
     public void confirm(View view) {
+
+        int image = R.drawable.pajak_kendaraan;
+
         tanggalTerakhir = tanggalLama.getText().toString();
         tanggalOptimal = tanggalBaru.getText().toString();
-        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("date").setValue(tanggalTerakhir);
-        databaseReference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("dateOptimal").setValue(tanggalOptimal);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("date").setValue(tanggalTerakhir);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("dateOptimal").setValue(tanggalOptimal);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Air Radiator").child("image").setValue(image);
+
 
 
         Intent intent = new Intent(PajakKendaraan.this, BikeDetail.class);
