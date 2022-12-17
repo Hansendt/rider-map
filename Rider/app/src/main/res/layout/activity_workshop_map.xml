@@ -6,7 +6,7 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SpbuMap"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/gradient">
 
     <LinearLayout
         android:layout_width="250dp"
