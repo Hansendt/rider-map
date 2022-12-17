@@ -203,6 +203,7 @@ public class Home extends AppCompatActivity {
                             bundle.putString("vehiclePlate", vehiclePlateString);
                             bundle.putString("cylinderCapacity", cylinderCapacityString);
                             bundle.putString("vehicleFrameNumber", vehicleFrameNumberString);
+                            bundle.putInt("vehiclePhoto", vehiclePhoto);
                             bikeCreatedFragment.setArguments(bundle);
                             transaction.replace(R.id.frameLayout, bikeCreatedFragment);
                             transaction.commitAllowingStateLoss();
