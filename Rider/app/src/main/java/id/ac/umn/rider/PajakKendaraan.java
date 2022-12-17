@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,10 +77,12 @@ public class PajakKendaraan extends AppCompatActivity {
         updateTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(PajakKendaraan.this, (view1, year, month, dayOfMonth) -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PajakKendaraan.this, R.style.datePicker, (view1, year, month, dayOfMonth) -> {
                     tanggalLama.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     tanggalBaru.setText(dayOfMonth + "/" + (month + 1) + "/" + (year+1));
                 }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
                 datePickerDialog.show();
             }
         });

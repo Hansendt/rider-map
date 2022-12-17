@@ -2,6 +2,7 @@ package id.ac.umn.rider;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -46,10 +47,11 @@ public class PartRantai extends AppCompatActivity {
         updateTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(PartRantai.this, (view1, year, month, dayOfMonth) -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PartRantai.this, R.style.datePicker, (view1, year, month, dayOfMonth) -> {
                     tanggalLama.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     tanggalBaru.setText(dayOfMonth + "/" + (month + 1) + "/" + (year+2));
                 }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
                 datePickerDialog.show();
             }
         });
