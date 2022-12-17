@@ -46,6 +46,46 @@ public class ListPart extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void banBelakang(View view) {
+        Intent intent = new Intent(ListPart.this, PartBanBelakang.class);
+        startActivity(intent);
+    }
+
+    public void oliMesin(View view) {
+        Intent intent = new Intent(ListPart.this, PartOliMesin.class);
+        startActivity(intent);
+    }
+
+    public void oliGardan(View view) {
+        Intent intent = new Intent(ListPart.this, PartOliGardan.class);
+        startActivity(intent);
+    }
+
+    public void kampasRemDpn(View view) {
+        Intent intent = new Intent(ListPart.this, PartKampasRemDepan.class);
+        startActivity(intent);
+    }
+
+    public void kampasRemBlkng(View view) {
+        Intent intent = new Intent(ListPart.this, PartKampasRemBelakang.class);
+        startActivity(intent);
+    }
+
+    public void busi(View view) {
+        Intent intent = new Intent(ListPart.this, PartBusi.class);
+        startActivity(intent);
+    }
+
+    public void airRadiator(View view) {
+        Intent intent = new Intent(ListPart.this, PartAirRadiator.class);
+        startActivity(intent);
+    }
+
+    public void rantai(View view) {
+        Intent intent = new Intent(ListPart.this, PartRantai.class);
+        startActivity(intent);
+    }
+
     public void toDetail(View view) {
         Intent intent = new Intent(ListPart.this, BikeDetail.class);
         intent.putExtra("username", username);

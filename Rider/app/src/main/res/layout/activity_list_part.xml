@@ -102,7 +102,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="banBelakang">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -139,7 +140,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="oliGardan">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -176,7 +178,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="oliMesin">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -213,7 +216,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="kampasRemBlkng">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -250,7 +254,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="kampasRemDpn">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -287,7 +292,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="busi">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -324,7 +330,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="airRadiator">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -361,7 +368,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="rantai">
 
                         <ImageView
                             android:layout_width="wrap_content"
