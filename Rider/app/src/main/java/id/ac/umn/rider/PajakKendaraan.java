@@ -57,7 +57,7 @@ public class PajakKendaraan extends AppCompatActivity {
         tanggalOptimal = tanggalBaru.getText().toString();
         databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("date").setValue(tanggalTerakhir);
         databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("dateOptimal").setValue(tanggalOptimal);
-        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Air Radiator").child("image").setValue(image);
+        databaseReference.child("Users").child(mAuth.getCurrentUser().getUid()).child("Reminder").child("Pajak Kendaraan").child("image").setValue(image);
 
 
 
