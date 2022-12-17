@@ -1,5 +1,6 @@
 package id.ac.umn.rider;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -8,11 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,9 +28,11 @@ public class PajakKendaraan extends AppCompatActivity {
     ArrayList<Reminder> reminderList;
 
     TextView tanggalLama, tanggalBaru;
+    ImageView bikeImage;
     Button updateTanggal;
-    String tanggalTerakhir, tanggalOptimal;
+    String tanggalTerakhir, tanggalOptimal, userUID;
     FirebaseAuth mAuth;
+    private FirebaseUser user;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://rider-6018c-default-rtdb.firebaseio.com/");
 
     @Override
@@ -35,7 +43,23 @@ public class PajakKendaraan extends AppCompatActivity {
         tanggalLama = findViewById(R.id.editText);
         tanggalBaru = findViewById(R.id.tanggalBaru);
         updateTanggal = findViewById(R.id.update);
+        bikeImage = findViewById(R.id.bikeImagePajak);
         mAuth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userUID = user.getUid();
+
+        databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                bikeImage.setImageResource(snapshot.child(userUID).child("Bike").child("vehiclePhoto").getValue(Integer.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         updateTanggal.setOnClickListener(new View.OnClickListener() {
             @Override

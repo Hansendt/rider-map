@@ -191,6 +191,7 @@ public class Home extends AppCompatActivity {
                             vehiclePlateString = snapshot.child(userUID).child("Bike").child("vehiclePlate").getValue().toString();
                             cylinderCapacityString = snapshot.child(userUID).child("Bike").child("cylinderCapacity").getValue().toString();
                             vehicleFrameNumberString = snapshot.child(userUID).child("Bike").child("vehicleFrameNumber").getValue().toString();
+                            vehiclePhoto = snapshot.child(userUID).child("Bike").child("vehiclePhoto").getValue(Integer.class);
 
                             BikeCreatedFragment bikeCreatedFragment = new BikeCreatedFragment();
                             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

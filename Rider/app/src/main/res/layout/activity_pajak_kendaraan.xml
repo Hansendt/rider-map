@@ -22,10 +22,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bikeImagePajak"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bike"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="30dp"
@@ -41,7 +40,7 @@
         android:textSize="16dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/bikeImagePajak"
         tools:layout_editor_absoluteX="108dp" />
 
     <TextView
@@ -56,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/bikeImagePajak"
         app:layout_constraintVertical_bias="0.306" />
 
 <!--    <DatePicker-->
