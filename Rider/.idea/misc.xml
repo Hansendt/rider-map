@@ -16,6 +16,7 @@
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/drawable/selector.xml" value="0.2225" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/drawable/shop.xml" value="0.2225" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_bike_detail.xml" value="0.24456521739130435" />
+        <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_home.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_list_part.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_list_part_airradiator.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_list_part_banbelakang.xml" value="0.24456521739130435" />
@@ -29,9 +30,12 @@
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_list_part_rantai.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_login.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_main.xml" value="0.24456521739130435" />
+        <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_spbu.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_welcome.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_welcome1.xml" value="0.24456521739130435" />
         <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_welcome2.xml" value="0.24456521739130435" />
+        <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/activity_workshop_map.xml" value="0.24456521739130435" />
+        <entry key="..\:/Hansen/Kuliah 1/Semester 5/MAP/UAS/rider-map/Rider/app/src/main/res/layout/item_spbu.xml" value="0.18070652173913043" />
         <entry key="..\:/PAO/Kuliah/5/Mobile/UAS/rider-map/Rider/app/src/main/res/layout/activity_create_bike.xml" value="0.18385416666666668" />
         <entry key="..\:/PAO/Kuliah/5/Mobile/UAS/rider-map/Rider/app/src/main/res/layout/activity_home.xml" value="0.18385416666666668" />
         <entry key="..\:/PAO/Kuliah/5/Mobile/UAS/rider-map/Rider/app/src/main/res/layout/activity_list_part.xml" value="0.103125" />
