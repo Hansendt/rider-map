@@ -57,6 +57,41 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".PartBanBelakang"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PartBusi"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PartKampasRemBelakang"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PartKampasRemDepan"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PartOliGardan"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PartOliMesin"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PartRantai"
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ListPart"
             android:exported="false"
             android:configChanges="orientation"
