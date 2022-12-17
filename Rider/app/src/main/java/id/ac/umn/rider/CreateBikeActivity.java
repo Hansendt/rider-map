@@ -94,9 +94,9 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
                 "Benelli TNT 1130","Benelli TNT 899","Benelli TNT R160","Benelli TRE-K1130","Benelli TRE-K899","Benelli X150",
                 "Benelli Zafferano","Benelli Zenzero"};
 
-        String[] ktm = new String[]{"KTM Duke","KTM Loncini","KTM Primeo","KTM RC","KTM Rock Z"};
+        String[] ktm = new String[]{"KTM Duke","KTM Primeo","KTM RC"};
 
-        String[] bmw = new String[]{"BMW C 650","BMW C Evolution","BMW F 800","BMW F630GS","BMW F800S","BMW F800ST","BMW G 310",
+        String[] bmw = new String[]{"BMW C 650","BMW C Evolution","BMW F 800","BMW F800S","BMW F800ST","BMW G 310",
                 "BMW G650 Xchallenge","BMW G650 Xcountry","BMW G650 Xmoto","BMW HP 2 Enduro","BMW K 1600","BMW K1200GT","BMW R 1200",
                 "BMW R NineT","BMW R1150RT","BMW R1200GS","BMW S 1000"};
 
