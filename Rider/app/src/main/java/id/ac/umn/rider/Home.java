@@ -248,5 +248,19 @@ public class Home extends AppCompatActivity {
 
     protected void onRestart() {
         super.onRestart();
+        databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(userUID).child("Reminder").exists()) {
+                    replaceFragmentReminder(new ReminderFragment());
+                } else{
+                    replaceFragmentReminder(new NoReminderFragment());
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Home.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
