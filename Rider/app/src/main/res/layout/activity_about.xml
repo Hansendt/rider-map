@@ -67,7 +67,7 @@
         android:layout_marginTop="-29dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Rider 1.0"
+        android:text="versioncode"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="15sp" />
