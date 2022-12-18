@@ -44,7 +44,13 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setHomeAsUpIndicator(R.drawable.back);
+        actionBar.setTitle("New Bike Data");
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_create_bike);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -151,6 +157,16 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -9,31 +9,12 @@
     android:orientation="vertical"
     android:padding="25dp">
 
-    <LinearLayout
-        android:id="@+id/back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/btnBacktoWelcome"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/back" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="New Bike Data"
-            android:textColor="@color/white"
-            android:textSize="27sp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/form">
 
         <com.google.android.material.textfield.TextInputLayout
