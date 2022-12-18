@@ -67,14 +67,14 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
         vehicleBrand.setAdapter(adapter);
 
         String[] honda = new String[]{"Honda Absolute Revo","Honda Air blade","Honda Astrea","Honda Beat","Honda Blade",
-                "Honda CB","Honda CB 150R","Honda CBF 600 Hornet","Honda CBR","Honda CRF250Rally","Honda CS 1","Honda kharisma",
+                "Honda CB","Honda CB150R","Honda CBF600 Hornet","Honda CBR","Honda CRF250Rally","Honda CS 1","Honda kharisma",
                 "Honda Kirana","Honda Legenda","Honda Little Cub","Honda Mega pro","Honda Monkey","Honda NSR","Honda PCX",
                 "Honda Phantom","Honda Revo","Honda Scoopy","Honda SH150i","Honda Shadow 750","Honda Sonic","Honda Spacy",
                 "Honda STX1300","Honda Supra","Honda Tiger","Honda Vario","Honda Verza","Honda Win 100","Honda Zoomer"};
 
-        String[] yamaha = new String[]{"Yamaha As3","Yamaha Byson","Yamaha Crypton","Yamaha F 1 ZR","Yamaha Fazer","Yamaha Fino",
+        String[] yamaha = new String[]{"Yamaha As3","Yamaha Byson","Yamaha Crypton","Yamaha F1ZR","Yamaha Fazer","Yamaha Fino",
                 "Yamaha Freego","Yamaha FZ1","Yamaha FZ6","Yamaha Grizzly","Yamaha Jupiter","Yamaha Lexam","Yamaha Lexi",
-                "Yamaha Majesty","Yamaha Mio","Yamaha MT 09","Yamaha MT 25","Yamaha NMAX","Yamaha Nuovo","Yamaha R1","Yamaha R25",
+                "Yamaha Majesty","Yamaha Mio","Yamaha MT09","Yamaha MT25","Yamaha NMAX","Yamaha Nuovo","Yamaha R1","Yamaha R25",
                 "Yamaha R6","Yamaha RX","Yamaha RZR","Yamaha Scorpio","Yamaha Sigma","Yamaha Soul GT","Yamaha T-Max 500",
                 "Yamaha Tiara","Yamaha Tmax","Yamaha TW 225","Yamaha Vega R","Yamaha Vega ZR","Yamaha Vixion","Yamaha Vox",
                 "Yamaha WR 250","Yamaha X-Ride","Yamaha Xabre","Yamaha Xeon","Yamaha Xmax","Yamaha YZF R15","Yamaha YZF R16",
@@ -97,8 +97,8 @@ public class CreateBikeActivity extends AppCompatActivity implements View.OnClic
         String[] ktm = new String[]{"KTM Duke","KTM Primeo","KTM RC"};
 
         String[] bmw = new String[]{"BMW C 650","BMW C Evolution","BMW F 800","BMW F800S","BMW F800ST","BMW G 310",
-                "BMW G650 Xchallenge","BMW G650 Xcountry","BMW G650 Xmoto","BMW HP 2 Enduro","BMW K 1600","BMW K1200GT","BMW R 1200",
-                "BMW R NineT","BMW R1150RT","BMW R1200GS","BMW S 1000"};
+                "BMW G650 Xchallenge","BMW G650 Xcountry","BMW G650 Xmoto","BMW HP 2 Enduro","BMW K 1600","BMW K1200GT","BMW R1200",
+                "BMW R NineT","BMW R1150RT","BMW R1200GS","BMW S1000"};
 
         ArrayAdapter<String> Honda = new ArrayAdapter<>(this, R.layout.dropdown_item, honda);
         ArrayAdapter<String> Yamaha = new ArrayAdapter<>(this, R.layout.dropdown_item, yamaha);
