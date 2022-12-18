@@ -16,11 +16,17 @@ import com.google.firebase.auth.FirebaseAuth;
 public class About extends AppCompatActivity {
 
     Button logout;
+    String VersionName = BuildConfig.VERSION_NAME;
+    TextView version;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_about);
+
+        version = (TextView)findViewById(R.id.version);
+
+        version.setText("Rider version: " + VersionName);
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.about);
@@ -59,7 +65,7 @@ public class About extends AppCompatActivity {
             }
         });
 
-        String VersionName = BuildConfig.VERSION_NAME;
-        TextView version = (TextView)findViewById(R.id.version);
+
+
     }
 }
